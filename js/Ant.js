@@ -6,7 +6,7 @@ function Ball(info) {
   this.xVel = info.xVel;
   this.yVel = info.yVel;
   this.img=new Image();
-  this.img.src='../images/ant-walk.png';
+  this.img.src='./images/ant-walk.png';
   this.show = function () {
     const no=8;
     const totalNo=62;
