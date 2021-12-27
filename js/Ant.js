@@ -2,39 +2,44 @@ function Ball(info) {
   this.radius = info.radius;
   this.x = info.x;
   this.y = info.y;
-  this.frameCount=0;
+  this.frameCount = 0;
   this.xVel = info.xVel;
   this.yVel = info.yVel;
-  this.img=new Image();
-  this.img.src='../images/ant-walk.png';
+  this.img = new Image();
+  this.img.src = "./images/ant-walk.png";
   this.show = function () {
-    const no=8;
-    const totalNo=62;
-    const index=this.frameCount%totalNo;
-    const yIndex=Math.floor(index/no);
-    const xIndex=index%no;
-    const w=50;
-    const h=100;
+    const no = 8;
+    const totalNo = 62;
+    const index = this.frameCount % totalNo;
+    const yIndex = Math.floor(index / no);
+    const xIndex = index % no;
+    const w = 50;
+    const h = 100;
     context.save();
-    let ratio=this.yVel/this.xVel;
-    context.translate(this.x,this.y);
-    if(this.xVel<0 && this.yVel<0){
-    context.rotate(Math.atan(ratio)-Math.PI/2);
+    let ratio = this.yVel / this.xVel;
+    context.translate(this.x, this.y);
+    if (this.xVel < 0 && this.yVel < 0) {
+      context.rotate(Math.atan(ratio) - Math.PI / 2);
+    } else if (this.xVel > 0 && this.yVel < 0) {
+      context.rotate(Math.atan(ratio) + Math.PI / 2);
+    } else if (this.xVel < 0 && this.yVel > 0) {
+      context.rotate(Math.atan(ratio) - Math.PI / 2);
+    } else {
+      context.rotate(Math.atan(ratio) + Math.PI / 2);
     }
-    else if(this.xVel>0 && this.yVel<0){
-      context.rotate(Math.atan(ratio)+Math.PI/2);
-    }
-    else if(this.xVel<0 && this.yVel>0){
-      context.rotate(Math.atan(ratio)-Math.PI/2);
-    }
-    else{
-      context.rotate(Math.atan(ratio)+Math.PI/2);
-    }
-    context.drawImage(this.img,xIndex*w,yIndex*h,w,h,-this.radius,-this.radius,this.radius*2,this.radius*2);
+    context.drawImage(
+      this.img,
+      xIndex * w,
+      yIndex * h,
+      w,
+      h,
+      -this.radius,
+      -this.radius,
+      this.radius * 2,
+      this.radius * 2
+    );
     context.restore();
-    
 
-  
     this.frameCount++;
   };
   this.update = function () {

@@ -2,7 +2,7 @@ let canvas = document.getElementById("viewPort");
 let button = document.getElementById("reset");
 let height = "650";
 let width = "1400";
-const  number=100;
+const number = 100;
 let ballInfo;
 let balls = [];
 let animation;
@@ -44,13 +44,13 @@ button.addEventListener("click", function () {
   balls = [];
   setup();
 });
-canvas.addEventListener('click',function(e){
-  const audio = new Audio('./sounds/sound.mp3');
-    audio.play();
-  for(let i=balls.length-1;i>=0;i--){
-    let dist=distance(balls[i].x,balls[i].y,e.clientX,e.clientY);
-    if(dist<balls[i].radius){
-      balls.splice(i,1);
+canvas.addEventListener("click", function (e) {
+  const audio = new Audio("./sounds/sound.mp3");
+  audio.play();
+  for (let i = balls.length - 1; i >= 0; i--) {
+    let dist = distance(balls[i].x, balls[i].y, e.clientX, e.clientY);
+    if (dist < balls[i].radius) {
+      balls.splice(i, 1);
     }
   }
 });

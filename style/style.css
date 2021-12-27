@@ -1,8 +1,8 @@
-button{
-    display: block;
-    width: 200px;
-    padding: 10px;
+button {
+  display: block;
+  width: 200px;
+  padding: 10px;
 }
-#viewPort:hover{
-    cursor:crosshair;
+#viewPort:hover {
+  cursor: crosshair;
 }
