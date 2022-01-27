@@ -43,12 +43,23 @@ function Ball(info) {
     this.frameCount++;
   };
   this.update = function () {
-    if (this.x + this.radius >= width || this.x - this.radius < 0) {
+    if (this.x + this.radius >= width) {
+      this.x=width-this.radius;
       this.xVel *= -1;
     }
-    if (this.y + this.radius >= height || this.y - this.radius < 0) {
+    if (this.x - this.radius <= 0) {
+      this.x=this.radius;
+      this.xVel *= -1;
+    }
+    if (this.y + this.radius >= height) {
+      this.y=height-this.radius;
       this.yVel *= -1;
     }
+    if (this.y - this.radius <= 0) {
+      this.y=this.radius;
+      this.yVel *= -1;
+    }
+    
     this.x += this.xVel;
     this.y += this.yVel;
   };
